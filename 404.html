@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Logos Imagined</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#101820",
+            sand: "#f7f3eb",
+            ember: "#df6d3c"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="flex min-h-screen items-center justify-center bg-sand px-6 text-ink">
+  <div class="max-w-xl text-center">
+    <p class="text-sm font-medium uppercase tracking-[0.22em] text-ember">404</p>
+    <h1 class="mt-4 text-4xl font-semibold">That page is not here.</h1>
+    <p class="mt-4 text-lg text-black/70">The link may be old, or the page may have moved.</p>
+    <a href="index.html" class="mt-8 inline-flex rounded-full bg-ink px-6 py-3 text-sm font-medium text-sand transition hover:bg-ember">Back to Home</a>
+  </div>
+</body>
+</html>

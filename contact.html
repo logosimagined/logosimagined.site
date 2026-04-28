@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Logos Imagined</title>
+  <meta name="description" content="Get in touch with Logos Imagined to start a branding project.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#101820",
+            sand: "#f7f3eb",
+            ember: "#df6d3c",
+            moss: "#586b56",
+            fog: "#d7d7cf"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="bg-sand text-ink">
+  <header class="border-b border-black/10 bg-sand/90 backdrop-blur supports-[backdrop-filter]:bg-sand/80">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+      <a href="index.html" class="text-lg font-semibold tracking-[0.18em] uppercase">Logos Imagined</a>
+      <button id="menu-toggle" class="rounded border border-black/15 px-3 py-2 text-sm md:hidden" type="button" aria-expanded="false" aria-controls="mobile-nav">
+        Menu
+      </button>
+      <nav class="hidden items-center gap-6 text-sm md:flex">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="rounded-full bg-ink px-4 py-2 text-sand transition hover:bg-ember">Contact</a>
+      </nav>
+    </div>
+    <nav id="mobile-nav" class="mx-auto hidden max-w-6xl px-6 pb-4 md:hidden lg:px-8">
+      <div class="grid gap-2 rounded-2xl border border-black/10 bg-white p-4 text-sm shadow-sm">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link is-active">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-surface">
+      <div class="mx-auto max-w-6xl px-6 py-20 lg:px-8">
+        <p class="text-sm font-medium uppercase tracking-[0.22em] text-ember">Contact</p>
+        <h1 class="mt-4 max-w-3xl text-5xl font-semibold leading-tight">Start with a quick conversation.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-black/70">
+          Replace the placeholder details below with your preferred email, booking link, or inquiry form when you are ready.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-y border-black/10 bg-white">
+      <div class="mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+        <div class="rounded-3xl border border-black/10 p-8">
+          <h2 class="text-2xl font-semibold">Project inquiries</h2>
+          <p class="mt-4 text-black/70">Email: hello@logosimagined.com</p>
+          <p class="mt-2 text-black/70">Location: Remote</p>
+          <p class="mt-6 text-black/70">
+            Typical next step: a short intro call, a quick review of your goals, then a tailored scope.
+          </p>
+        </div>
+        <div class="rounded-3xl bg-ink p-8 text-sand">
+          <h2 class="text-2xl font-semibold">What to include</h2>
+          <ul class="mt-6 grid gap-3 text-sand/80">
+            <li>Your business name and website</li>
+            <li>What feels outdated or missing</li>
+            <li>Where the logo will be used first</li>
+            <li>Your target timeline</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-black/10 bg-white">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 text-sm text-black/60 md:flex-row md:items-center md:justify-between lg:px-8">
+      <p>&copy; <span id="year"></span> Logos Imagined</p>
+      <div class="flex gap-4">
+        <a href="services.html" class="hover:text-ink">Services</a>
+        <a href="about.html" class="hover:text-ink">About</a>
+        <a href="contact.html" class="hover:text-ink">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
