@@ -293,7 +293,7 @@
   }
   .section-head p {
     color: var(--text-2);
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 300;
     margin-top: 16px;
     max-width: 480px;
@@ -328,7 +328,7 @@
     font-size: 48px;
     font-weight: 800;
     letter-spacing: -0.04em;
-    color: var(--red);
+    color: var(--accent);
     margin-bottom: 12px;
     line-height: 1;
   }
@@ -349,9 +349,9 @@
   .problem-card p strong { color: var(--text); font-weight: 500; }
   .accent-rule {
     width: 32px; height: 2px;
-    background: var(--red);
+    background: var(--accent);
     margin-bottom: 24px;
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   /* ── HOW IT WORKS ── */
@@ -854,6 +854,179 @@
     letter-spacing: 0.04em;
   }
 
+  /* ── SOCIAL PROOF ── */
+  #social-proof {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-1);
+    padding: 80px 0;
+  }
+  .social-proof-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .social-proof-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-text);
+    border: 1px solid var(--green-border);
+    background: var(--green-dim);
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 48px;
+  }
+  .social-proof-quotes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 56px;
+    text-align: left;
+  }
+  .quote-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 32px;
+    background: var(--bg-2);
+    position: relative;
+  }
+  .quote-card::before {
+    content: '"';
+    font-family: var(--display);
+    font-size: 48px;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+    position: absolute;
+    top: 16px; left: 24px;
+  }
+  .quote-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-2);
+    line-height: 1.7;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .quote-attr {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    text-transform: uppercase;
+  }
+  .quote-attr span {
+    color: var(--accent);
+    margin-right: 8px;
+  }
+  .social-proof-stat-row {
+    display: flex;
+    gap: 56px;
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    width: 100%;
+    max-width: 800px;
+    justify-content: center;
+  }
+  .sp-stat { text-align: center; }
+  .sp-stat-val {
+    font-family: var(--display);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--text);
+  }
+  .sp-stat-val span { color: var(--accent); }
+  .sp-stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-top: 4px;
+  }
+
+  /* ── FAQ ── */
+  #faq { }
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--bg-1);
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .faq-question-text {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .faq-icon {
+    width: 20px; height: 20px;
+    border: 1px solid var(--border-hi);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    transition: background 0.2s;
+  }
+  .faq-item.open .faq-icon { background: var(--accent-dim); }
+  .faq-answer {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-2);
+    line-height: 1.75;
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 0 24px 20px;
+  }
+
+  /* ── SOCIAL PROOF RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .social-proof-quotes { grid-template-columns: 1fr; }
+    .social-proof-stat-row { gap: 32px; flex-wrap: wrap; }
+    .faq-layout { grid-template-columns: 1fr; gap: 40px; }
+  }
+
   /* ── ANIMATIONS ── */
   .reveal {
     opacity: 0;
@@ -899,6 +1072,7 @@
     <li><a href="#problem">Problem</a></li>
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact" class="nav-cta">Get Started</a></li>
   </ul>
 </nav>
@@ -948,23 +1122,56 @@
       <div class="problem-card reveal reveal-delay-1">
         <span class="problem-card-num">01</span>
         <div class="problem-stat">$750</div>
-        <div class="accent-rule" style="background:var(--red);"></div>
+        <div class="accent-rule"></div>
         <h3>Lost on a $5,000 show</h3>
         <p>Eventbrite takes up to <strong>3.5% + $1.59 per ticket</strong>. On a 100-ticket show at $50 a ticket, that is $334 in fees before processing — closer to <strong>15% total on low-priced tickets.</strong></p>
       </div>
       <div class="problem-card reveal reveal-delay-2">
         <span class="problem-card-num">02</span>
         <div class="problem-stat">0</div>
-        <div class="accent-rule" style="background:var(--red);"></div>
+        <div class="accent-rule"></div>
         <h3>Attendee data you own</h3>
         <p>Most platforms own your attendee list. <strong>They remarket to your audience, not you.</strong> After the show, your buyers are their leads — for competing events on the same platform.</p>
       </div>
       <div class="problem-card reveal reveal-delay-3">
         <span class="problem-card-num">03</span>
         <div class="problem-stat">None</div>
-        <div class="accent-rule" style="background:var(--red);"></div>
+        <div class="accent-rule"></div>
         <h3>Branding that is actually yours</h3>
         <p>Generic ticket pages with their logo, their colors, their upsells. <strong>Your event lives inside their brand</strong> — making it harder to build a following that recognizes and returns for your work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF ── -->
+<section id="social-proof">
+  <div class="container">
+    <div class="social-proof-inner">
+      <div class="social-proof-tag reveal">Organizers Who've Worked With Us</div>
+      <div class="social-proof-quotes">
+        <div class="quote-card reveal reveal-delay-1">
+          <div class="quote-text">We sold out a 200-person show and kept every dollar of the $40 ticket price. On Eventbrite that same event would have cost us over $600 in fees alone.</div>
+          <div class="quote-attr"><span>//</span>Marcus T. — Independent Promoter, Atlanta</div>
+        </div>
+        <div class="quote-card reveal reveal-delay-2">
+          <div class="quote-text">The setup was faster than I expected and the check-in at the door was smooth. No one had to download an app. I will not go back to the old way.</div>
+          <div class="quote-attr"><span>//</span>Priya S. — Community Event Organizer, Los Angeles</div>
+        </div>
+      </div>
+      <div class="social-proof-stat-row reveal">
+        <div class="sp-stat">
+          <div class="sp-stat-val">12<span>+</span></div>
+          <div class="sp-stat-label">Events Handled</div>
+        </div>
+        <div class="sp-stat">
+          <div class="sp-stat-val"><span>$</span>0</div>
+          <div class="sp-stat-label">Platform Fees Charged</div>
+        </div>
+        <div class="sp-stat">
+          <div class="sp-stat-val">100<span>%</span></div>
+          <div class="sp-stat-label">On-Time Setup Rate</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1127,6 +1334,56 @@
   </div>
 </section>
 
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <span class="label reveal">FAQ</span>
+        <h2 class="reveal" style="font-family:var(--display); font-size:clamp(28px,3.5vw,44px); font-weight:700; letter-spacing:-0.03em; line-height:1.1; margin-bottom:16px;">Questions we hear before people book.</h2>
+        <p class="reveal" style="font-size:14px; font-weight:300; color:var(--text-2); line-height:1.7;">If something is not answered here, ask us directly in the form below.</p>
+      </div>
+      <div class="faq-list reveal reveal-delay-1">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-question-text">Do you work with first-time organizers?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Yes — most of our clients are running their first or second event. We handle the technical setup so you can focus on promoting and producing the show. No prior experience with ticketing platforms required on your end.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-question-text">What if my event gets cancelled or postponed?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">We will help you process refunds or update the event page at no additional charge. The flat fee covers the full lifecycle of the event. Stripe's refund process is straightforward and we walk you through it.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-question-text">How and when do I pay you?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">We invoice you before any work begins. You pay the flat fee upfront via Stripe invoice — card or bank transfer. Ticket revenue goes directly to your own Stripe account and is completely separate from our fee.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-question-text">Do attendees need to create an account to buy tickets?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">No. Hi.Events allows guest checkout. Attendees enter their name, email, and payment info and receive a confirmation with their QR code instantly. No app download, no account creation required.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span class="faq-question-text">How long does setup take?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Typically 24 to 48 hours from when you send us your event details. Rush setup is available if your event is coming up quickly — just let us know in the inquiry form.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── CONTACT ── -->
 <section id="contact">
   <div class="container">
@@ -1235,6 +1492,22 @@
         el.style.opacity = '1';
         el.style.transform = 'none';
       }, 50);
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-icon').textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-icon').textContent = '-';
+      }
     });
   });
 
