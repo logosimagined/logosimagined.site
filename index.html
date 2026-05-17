@@ -11,23 +11,26 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #080806;
-    --bg-1: #0e0d0b;
-    --bg-2: #141310;
-    --bg-3: #1c1a16;
-    --border: #242018;
-    --border-hi: #38321f;
-    --text: #d4cfc4;
-    --text-2: #7a7468;
-    --text-3: #4a4540;
+    --bg: #0b0d12;
+    --bg-1: #0f1117;
+    --bg-2: #141720;
+    --bg-3: #1a1e2a;
+    --border: #1e2233;
+    --border-hi: #2a3050;
+    --text: #e8eaf0;
+    --text-2: #6b7494;
+    --text-3: #3d4460;
     --accent: #e8620a;
     --accent-dim: rgba(232, 98, 10, 0.10);
-    --accent-border: rgba(232, 98, 10, 0.28);
+    --accent-border: rgba(232, 98, 10, 0.30);
     --accent-hot: #ff7a1a;
-    --green: #4a7c3f;
-    --green-dim: rgba(74, 124, 63, 0.12);
-    --green-border: rgba(74, 124, 63, 0.3);
-    --green-text: #6aaa5a;
+    --blue: #3b7fff;
+    --blue-dim: rgba(59, 127, 255, 0.08);
+    --blue-border: rgba(59, 127, 255, 0.22);
+    --green: #22c55e;
+    --green-dim: rgba(34, 197, 94, 0.10);
+    --green-border: rgba(34, 197, 94, 0.25);
+    --green-text: #4ade80;
     --mono: 'DM Mono', monospace;
     --display: 'Syne', sans-serif;
     --body: 'DM Sans', sans-serif;
@@ -71,7 +74,7 @@
   }
   nav.scrolled {
     border-color: var(--border);
-    background: rgba(8,8,6,0.9);
+    background: rgba(11,13,18,0.9);
     backdrop-filter: blur(16px);
   }
   .nav-logo {
@@ -82,6 +85,12 @@
     text-transform: uppercase;
     color: var(--text);
     text-decoration: none;
+  }
+  .nav-logo::before {
+    content: '»';
+    color: var(--accent);
+    font-size: 14px;
+    margin-right: 6px;
   }
   .nav-logo span { color: var(--accent); }
   .nav-links {
@@ -113,6 +122,37 @@
   }
   .nav-cta:hover { background: var(--accent-hot) !important; color: var(--bg) !important; }
 
+  .marquee-ticker {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    background: rgba(11,13,18,0.82);
+    backdrop-filter: blur(12px);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 24s linear infinite;
+  }
+  .marquee-track span {
+    flex: 0 0 auto;
+    padding: 8px 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
   /* ── SHARED ── */
   .container { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
   .label {
@@ -125,6 +165,25 @@
     margin-bottom: 20px;
   }
   section { padding: 112px 0; }
+  .section-divider {
+    position: relative;
+    height: 1px;
+    margin: 0 auto;
+    max-width: 1120px;
+    background: var(--border);
+  }
+  .section-divider span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--accent);
+    opacity: 0.4;
+    font-size: 10px;
+    line-height: 1;
+    background: var(--bg);
+    padding: 0 14px;
+  }
 
   /* ── HERO ── */
   #hero {
@@ -134,6 +193,19 @@
     position: relative;
     overflow: hidden;
     padding: 0;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    left: -10vw;
+    top: 34%;
+    width: 120vw;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.12;
+    transform: rotate(15deg);
+    transform-origin: center;
+    pointer-events: none;
   }
   .hero-grid {
     position: absolute;
@@ -150,6 +222,16 @@
     transform: translateX(-50%);
     width: 900px; height: 700px;
     background: radial-gradient(ellipse, rgba(232,98,10,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-glow::after {
+    content: '';
+    position: absolute;
+    top: 120px;
+    right: -35vw;
+    width: 620px;
+    height: 520px;
+    background: radial-gradient(ellipse, rgba(59,127,255,0.05) 0%, transparent 68%);
     pointer-events: none;
   }
   .hero-content {
@@ -176,12 +258,12 @@
     margin-bottom: 36px;
   }
   .hero-tag::before {
-    content: '';
+    content: '»';
     display: block;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2.5s ease infinite;
+    color: var(--accent);
+    font-size: 13px;
+    line-height: 1;
+    animation: none;
   }
   @keyframes pulse {
     0%,100% { opacity: 1; }
@@ -257,11 +339,21 @@
   }
   .hero-stat-row {
     display: flex;
-    gap: 64px;
+    gap: 16px;
     border-top: 1px solid var(--border);
     padding-top: 40px;
   }
-  .hero-stat { }
+  .hero-stat {
+    border: 1px solid var(--border-hi);
+    border-radius: 4px;
+    padding: 20px 24px;
+    background: var(--bg-1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .hero-stat:hover {
+    border-color: var(--accent-border);
+    box-shadow: 0 0 24px rgba(232,98,10,0.06);
+  }
   .hero-stat-val {
     font-family: var(--display);
     font-size: 32px;
@@ -442,6 +534,7 @@
   }
   .pricing-card.featured {
     border-color: var(--accent-border);
+    border-top: 2px solid var(--accent);
     background: var(--bg-2);
   }
   .pricing-card.featured::before {
@@ -521,14 +614,6 @@
     flex-shrink: 0;
     margin-top: 1px;
   }
-  .pricing-note {
-    margin-top: 12px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-3);
-    letter-spacing: 0.04em;
-    text-align: center;
-  }
   .pricing-no-fees {
     text-align: center;
     font-family: var(--mono);
@@ -540,6 +625,37 @@
     border-top: 1px solid var(--border);
   }
   .pricing-no-fees strong { color: var(--accent); }
+  .pricing-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-text);
+    border: 1px solid var(--green-border);
+    background: var(--green-dim);
+    border-radius: 2px;
+    padding: 5px 9px;
+    margin-bottom: 16px;
+  }
+  .pricing-live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 12px rgba(34,197,94,0.36);
+  }
+  .pricing-fine-print {
+    margin-top: 12px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--text-3);
+  }
 
   /* ── HI.EVENTS ── */
   #integration { background: var(--bg-1); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -1038,7 +1154,7 @@
   /* ── ANIMATIONS ── */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .reveal.in-view {
@@ -1052,11 +1168,13 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 18px 24px; }
+    .marquee-ticker { top: 57px; }
     .nav-links { display: none; }
     .container { padding: 0 24px; }
     section { padding: 80px 0; }
     .hero-content { padding: 0 24px; padding-top: 100px; }
-    .hero-stat-row { gap: 32px; flex-wrap: wrap; }
+    .hero-stat-row { gap: 12px; flex-wrap: wrap; }
+    .hero-stat { flex: 1 1 190px; }
     .problem-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: 48px; }
     .steps::before { display: none; }
@@ -1084,6 +1202,12 @@
     <li><a href="#contact" class="nav-cta">Get Started</a></li>
   </ul>
 </nav>
+<div class="marquee-ticker" aria-hidden="true">
+  <div class="marquee-track">
+    <span>FLAT FEE&nbsp;&nbsp;·&nbsp;&nbsp;NO CUTS&nbsp;&nbsp;·&nbsp;&nbsp;24HR SETUP&nbsp;&nbsp;·&nbsp;&nbsp;STRIPE DIRECT&nbsp;&nbsp;·&nbsp;&nbsp;QR CHECK-IN&nbsp;&nbsp;·&nbsp;&nbsp;ZERO PLATFORM FEES&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span>FLAT FEE&nbsp;&nbsp;·&nbsp;&nbsp;NO CUTS&nbsp;&nbsp;·&nbsp;&nbsp;24HR SETUP&nbsp;&nbsp;·&nbsp;&nbsp;STRIPE DIRECT&nbsp;&nbsp;·&nbsp;&nbsp;QR CHECK-IN&nbsp;&nbsp;·&nbsp;&nbsp;ZERO PLATFORM FEES&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+  </div>
+</div>
 
 <!-- ── HERO ── -->
 <section id="hero">
@@ -1119,6 +1243,7 @@
 </section>
 
 <!-- ── PROBLEM ── -->
+<div class="section-divider" aria-hidden="true"><span>◆</span></div>
 <section id="problem">
   <div class="container">
     <div class="section-head reveal">
@@ -1153,6 +1278,7 @@
 </section>
 
 <!-- ── SOCIAL PROOF ── -->
+<div class="section-divider" aria-hidden="true"><span>◆</span></div>
 <section id="social-proof">
   <div class="container">
     <div class="social-proof-inner">
@@ -1186,6 +1312,7 @@
 </section>
 
 <!-- ── HOW IT WORKS ── -->
+<div class="section-divider" aria-hidden="true"><span>◆</span></div>
 <section id="how-it-works">
   <div class="container">
     <div class="section-head reveal">
@@ -1231,9 +1358,11 @@
 </section>
 
 <!-- ── PRICING ── -->
+<div class="section-divider" aria-hidden="true"><span>◆</span></div>
 <section id="pricing">
   <div class="container">
     <div class="section-head reveal">
+      <div class="pricing-live">Accepting Bookings</div>
       <span class="label">Pricing</span>
       <h2>Two services. Two flat fees.</h2>
       <p>One price per engagement. No percentage of sales. No upsell tiers. No gotchas.</p>
@@ -1253,8 +1382,8 @@
           <li>Attendee data export post-event</li>
           <li>Email confirmation setup</li>
         </ul>
-        <a href="https://buy.stripe.com/7sYeVf1MXade8ri2LD1kA00" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="text-align:center; display:block;">Get This Plan</a>
-        <div class="pricing-note">Flat fee locked in — no surprises.</div>
+        <a href="https://buy.stripe.com/7sYeVf1MXade8ri2LD1kA00" target="_blank" rel="noopener" class="btn-secondary" style="text-align:center; display:block;">Get This Plan</a>
+        <div class="pricing-fine-print">Flat fee locked in — no surprises.</div>
       </div>
       <div class="pricing-card featured reveal reveal-delay-2">
         <div class="pricing-label">Service 02</div>
@@ -1269,9 +1398,10 @@
           <li>Day-of operations oversight</li>
           <li>Post-event summary report</li>
         </ul>
-        <a href="https://buy.stripe.com/4gMcN70ITfxycHy85X1kA01" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center; display:block;">Get This Plan</a>
-        <div class="pricing-note">Flat fee locked in — no surprises.</div>
+        <a href="https://buy.stripe.com/4gMcN70ITfxycHy85X1kA01" target="_blank" rel="noopener" class="btn-primary" style="text-align:center; display:block;">Get This Plan</a>
+        <div class="pricing-fine-print">Flat fee locked in — no surprises.</div>
       </div>
+
     </div>
     <div class="pricing-no-fees reveal">
       <strong>No percentage of ticket sales.</strong> No hidden processing markups. No platform fees passed to you. What you see is what you pay.
@@ -1280,6 +1410,7 @@
 </section>
 
 <!-- ── HI.EVENTS INTEGRATION ── -->
+<div class="section-divider" aria-hidden="true"><span>◆</span></div>
 <section id="integration">
   <div class="container">
     <div class="integration-layout">
@@ -1344,6 +1475,7 @@
 </section>
 
 <!-- ── FAQ ── -->
+<div class="section-divider" aria-hidden="true"><span>◆</span></div>
 <section id="faq">
   <div class="container">
     <div class="faq-layout">
@@ -1394,6 +1526,7 @@
 </section>
 
 <!-- ── CONTACT ── -->
+<div class="section-divider" aria-hidden="true"><span>◆</span></div>
 <section id="contact">
   <div class="container">
     <div class="contact-layout">
