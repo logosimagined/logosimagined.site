@@ -1,10 +1,14 @@
-# OS files
+﻿# Local-only files - do not deploy
+*.json
+TourOps_Project_Brief.md
+logosimagined_business_flow.svg
+serpeat-logo.png
+
+# OS / editor
 .DS_Store
 Thumbs.db
-
-# Editor folders
 .vscode/
 .idea/
 
-# Logs
-*.log
+# Build output
+node_modules/
