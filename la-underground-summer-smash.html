@@ -572,6 +572,19 @@ body::before {
   .foot { flex-direction: column; align-items: flex-start; text-align: left; }
   .foot-right { text-align: left; }
 }
+      /* anchor-wrapped cards — behave like blocks, indicate clickability */
+      a.performer-card,
+      a.team-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      }
+      a.performer-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--event);
+        box-shadow: 0 8px 24px var(--event-glow);
+      }
 </style>
 </head>
 <body>
@@ -613,7 +626,7 @@ body::before {
     <div class="performers-grid">
 
       <!-- Performer 1 -->
-      <div class="performer-card">
+      <a href="https://instagram.com/ladeftw" target="_blank" rel="noopener" class="performer-card">
         <div class="img-wrap">
           <img src="images/la-underground-summer-smash/lade.png"
                alt="LADE"
@@ -624,13 +637,14 @@ body::before {
           <div class="name">LADE</div>
           <div class="handle">@ladeftw<span class="followers">16.2k followers</span></div>
         </div>
-      </div>
+      </a>
 
       <!-- Performer 2 -->
-      <div class="performer-card">
+      <a href="https://instagram.com/quooler" target="_blank" rel="noopener" class="performer-card">
         <div class="img-wrap">
           <img src="images/la-underground-summer-smash/bbykell.png"
                alt="BBY KELL"
+               style="object-position: center 75%;"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="initial" style="display:none">B</div>
         </div>
@@ -638,7 +652,7 @@ body::before {
           <div class="name">BBY KELL</div>
           <div class="handle">@quooler<span class="followers">24.5k followers</span></div>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
@@ -648,7 +662,7 @@ body::before {
     <div class="section-label">Team</div>
     <div class="team-grid">
 
-      <div class="team-card">
+      <a href="https://instagram.com/echoprojectlive" target="_blank" rel="noopener" class="team-card">
         <div class="pfp">
           <img src="images/la-underground-summer-smash/echoproject.png"
                alt="Echo Project"
@@ -658,9 +672,9 @@ body::before {
         <div class="name">Echo Project</div>
         <div class="handle">@echoprojectlive</div>
         <div class="role">Promoter &middot; 1k</div>
-      </div>
+      </a>
 
-      <div class="team-card">
+      <a href="https://instagram.com/adrianxsalazar" target="_blank" rel="noopener" class="team-card">
         <div class="pfp">
           <img src="images/la-underground-summer-smash/adrian.png"
                alt="Adrian"
@@ -670,9 +684,9 @@ body::before {
         <div class="name">Adrian</div>
         <div class="handle">@adrianxsalazar</div>
         <div class="role">Director &middot; 3.5k</div>
-      </div>
+      </a>
 
-      <div class="team-card">
+      <a href="https://instagram.com/starlifenick" target="_blank" rel="noopener" class="team-card">
         <div class="pfp">
           <img src="images/la-underground-summer-smash/starlifenick.png"
                alt="Nick"
@@ -682,7 +696,7 @@ body::before {
         <div class="name">Nick</div>
         <div class="handle">@starlifenick</div>
         <div class="role">Event Curator &middot; 6.4k</div>
-      </div>
+      </a>
 
     </div>
   </section>
@@ -715,7 +729,7 @@ body::before {
         Get Tickets
         <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <span class="tickets-note">Instant confirmation &middot; Powered by Hi.Events</span>
+      <span class="tickets-note">Instant confirmation</span>
     </div>
 
     <div class="tickets-embed">
